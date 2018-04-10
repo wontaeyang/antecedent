@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Wontae Yang"]
   spec.email         = ["wontaeyang@gmail.com"]
 
-  spec.summary       = %q{Override STI in polymorphic relation.}
-  spec.description   = %q{Sometimes, it is not desirable to retrieve STI models. This gem will allow relation to be returned in parent class.}
+  spec.summary       = %q{Disable STI in polymorphic relation.}
+  spec.description   = %q{Disable STI in polymorphic relation.}
   spec.homepage      = "https://github.com/wontaeyang/antecedent"
   spec.license       = "MIT"
 
