@@ -9,9 +9,6 @@ require_relative "../db/models/user.rb"
 require_relative "../db/models/customer.rb"
 require_relative "../db/models/user/admin.rb"
 
-# Load shared example
-require_relative "./shared_examples/user_example.rb"
-
 # Setup test database to be used for spec
 def db_configuration
   db_configuration_file = File.join(File.expand_path('..', __FILE__), '..', 'db', 'config.yml')
@@ -20,10 +17,7 @@ end
 ActiveRecord::Base.establish_connection(db_configuration["test"])
 
 RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
-
-  # Disable RSpec exposing methods globally on `Module` and `main`
   config.disable_monkey_patching!
 
   config.expect_with :rspec do |c|

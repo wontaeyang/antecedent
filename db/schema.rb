@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 2018_04_10_014636) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "type"
+    t.integer "parent_id"
+    t.string "parent_type"
   end
 
 end
