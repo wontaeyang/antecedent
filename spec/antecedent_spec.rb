@@ -48,19 +48,39 @@ RSpec.describe Antecedent do
       end
 
       context "with namespacing" do
-        it "returns result in base class" do
-          parent = create(:admin)
-          child = create(:user, {
-            parent_id: parent.id,
-            parent_type: parent.class.to_s
-          })
+        context "namespaced class exists" do
+          it "returns result in base class" do
+            parent = create(:admin)
+            child = create(:user, {
+              parent_id: parent.id,
+              parent_type: parent.class.to_s
+            })
 
-          Antecedent.disable_sti
-          child.reload
+            Antecedent.disable_sti
+            child.reload
 
-          expect(child.parent_id).to eq parent.id
-          expect(child.parent_type).to eq User::Admin.to_s
-          expect(child.parent.class).to eq User
+            expect(child.parent_id).to eq parent.id
+            expect(child.parent_type).to eq User::Admin.to_s
+            expect(child.parent.class).to eq User
+          end
+        end
+
+        context "namespaced class does not exist" do
+          it "returns result in parent class" do
+            type = "User::SomethingThatDoesNotExist"
+            parent = create(:user, type: type)
+            child = create(:user, {
+              parent_id: parent.id,
+              parent_type: parent.type,
+            })
+
+            Antecedent.disable_sti
+            child.reload
+
+            expect(child.parent_id).to eq parent.id
+            expect(child.parent_type).to eq type
+            expect(child.parent.class).to eq User
+          end
         end
       end
     end

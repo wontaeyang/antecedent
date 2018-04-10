@@ -7,7 +7,17 @@ module Antecedent
 
       def klass
         type = owner[reflection.foreign_type]
-        type.presence && type.constantize.base_class
+        type.presence && type_base_class(type)
+      end
+
+      private
+
+      def type_base_class(type)
+        type.constantize.base_class
+      rescue NameError
+        # if type class does not exist try
+        # removing namespace
+        type.deconstantize.constantize
       end
     end
 
