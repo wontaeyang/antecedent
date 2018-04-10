@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     antecedent (0.1.0)
+      activerecord (>= 4.2.7, < 5.3.0)
 
 GEM
   remote: https://rubygems.org/

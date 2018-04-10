@@ -8,9 +8,7 @@ require "support/factory_bot"
 require "support/database_cleaner"
 
 # AR models for testing
-require_relative "../db/models/user"
-require_relative "../db/models/customer"
-require_relative "../db/models/user/admin"
+require_relative "./models"
 
 # Setup test database to be used for spec
 def db_configuration
@@ -26,6 +24,4 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
-
-  # Database cleaner setup
 end
