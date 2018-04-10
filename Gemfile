@@ -9,4 +9,6 @@ group :test do
   gem 'activerecord', '~> 5.2'
   gem 'pg', '~> 1.0'
   gem 'standalone_migrations', '~> 5.2', '>= 5.2.5'
+  gem 'database_cleaner', '~> 1.6', '>= 1.6.2'
+  gem 'pry', '~> 0.11.3'
 end
