@@ -11,7 +11,6 @@ module Antecedent
       end
     end
 
-    # Remove instantiation to class defined in type column
     ActiveRecord::Base.inheritance_column = :_type_disabled
   end
 
@@ -22,7 +21,6 @@ module Antecedent
       end
     end
 
-    # Remove instantiation to class defined in type column
     ActiveRecord::Base.inheritance_column = :type
   end
 end

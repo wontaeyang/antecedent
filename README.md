@@ -1,8 +1,18 @@
 # Antecedent
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/antecedent`. To experiment with that code, run `bin/console` for an interactive prompt.
+In some cases it is not desirable to retrieve STI
+classes in polymorphic relation and having scopes to
+filter by type column is good enough. (ex: I had to create
+a read only client API app that retrieves records
+from existing Rails DB). This gem was created to
+override default behavior of ActiveRecord
+`BelongsToPolymorphicAssociation`
+and return association in its base classes.
 
-TODO: Delete this and the text above, and describe your gem
+It supports polymorphic type columns with base class names (ex: "User")
+and full class name (ex: "User::Admin").
+
+TODO: Add support for other AR versions (current version is only for 5.2)
 
 ## Installation
 
@@ -22,7 +32,33 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+to disable entirely add following line in `config/initializers/antecedent.rb`:
+
+```
+Antecedent.disable_sti
+```
+
+using a wrapper method:
+
+```
+def without_sti
+  Antecedent.disable_sti
+  yield
+  Antecedent.enable_sti
+end
+
+without_sti do
+  #your code here
+end
+```
+
+to allow STI in some models while disabled, add following:
+
+```
+class User < ActiveRecord::Base
+  self.inheritance_column = :type
+end
+```
 
 ## Development
 
@@ -35,13 +71,13 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 setup test db
 
 ```
-rake db:setup RAILS_ENV=test
+rake db:setup db:migrate RAILS_ENV=test
 ```
 
-run migration
+run spec:
 
 ```
-rake db:migrate RAILS_ENV=test
+rspec .
 ```
 
 
