@@ -1,13 +1,16 @@
 require "bundler/setup"
 require "antecedent"
 require "active_record"
-require "database_cleaner"
 require "pry"
 
+# Support files
+require "support/factory_bot"
+require "support/database_cleaner"
+
 # AR models for testing
-require_relative "../db/models/user.rb"
-require_relative "../db/models/customer.rb"
-require_relative "../db/models/user/admin.rb"
+require_relative "../db/models/user"
+require_relative "../db/models/customer"
+require_relative "../db/models/user/admin"
 
 # Setup test database to be used for spec
 def db_configuration
@@ -25,14 +28,4 @@ RSpec.configure do |config|
   end
 
   # Database cleaner setup
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
 end
