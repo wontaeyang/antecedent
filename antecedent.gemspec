@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Wontae Yang"]
   spec.email         = ["wontaeyang@gmail.com"]
 
-  spec.summary       = %q{Disable STI in polymorphic relation.}
-  spec.description   = %q{Disable STI in polymorphic relation.}
+  spec.summary       = %q{Disable STI in ActiveRecord polymorphic relation.}
+  spec.description   = %q{Disable STI in ActiveRecord polymorphic relation.}
   spec.homepage      = "https://github.com/wontaeyang/antecedent"
   spec.license       = "MIT"
 
