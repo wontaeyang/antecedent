@@ -1,7 +1,7 @@
 RSpec.describe User do
   describe "model class" do
     it "is loaded" do
-      expect { User }.to_not raise_error(NameError)
+      expect { User }.to_not raise_error
     end
   end
 
