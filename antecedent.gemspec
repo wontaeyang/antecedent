@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Wontae Yang"]
   spec.email         = ["wontaeyang@gmail.com"]
 
-  spec.summary       = %q{Remove STI in polymorphic relation.}
+  spec.summary       = %q{Override STI in polymorphic relation.}
   spec.description   = %q{Sometimes, it is not desirable to retrieve STI models. This gem will allow relation to be returned in parent class.}
-  spec.homepage      = "www.github.com"
+  spec.homepage      = "https://github.com/wontaeyang/antecedent"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
